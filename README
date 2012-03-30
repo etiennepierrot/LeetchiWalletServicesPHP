@@ -1,0 +1,6 @@
+This repository contains :
+* some example code for use with PHP the REST API Leetchi Wallet Services 
+* a little framework php to access with POST, GET, PUT, DELETE to the ressource of API Leetchi Wallet Services  (curl inside)
+
+
+For more information : http://doc.api.leetchi.com/
