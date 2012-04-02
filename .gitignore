@@ -1,3 +1,5 @@
 lib/example.pem
 lib/seedhack.pem
 lib/config.inc
+.*.pem
+*.pem
