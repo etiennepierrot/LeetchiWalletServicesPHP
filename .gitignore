@@ -3,3 +3,4 @@ lib/seedhack.pem
 lib/config.inc
 .*.pem
 *.pem
+*.project
