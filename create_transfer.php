@@ -52,9 +52,15 @@ if ($beneficiary_id != 0) {
 	 */
 	$beneficiary = request("users/$beneficiary_id", "GET");
 	if (!isset($beneficiary) || !isset($beneficiary -> ID)) {
+		
+		$beneficiary = request("wallets/$beneficiary_id", "GET");
+		if (!isset($beneficiary) || !isset($beneficiary -> ID)) {
 		print("Error");
 		return;
+		}
 	}
+	
+
 }
 
 

@@ -10,18 +10,18 @@
 
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
-$request_id = isset($_REQUEST["request_id"]) ? $_REQUEST["request_id"] : 0;
+$user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 
-if ($request_id == 0) {
+if ($user_id == 0) {
 	
-	echo "Error : no request_id in parameter";
+	echo "Error : no user_id in parameter";
 	return;
 
 } else {
 	/*
 	 * GET to fetch the user
 	 */
-	$request = request("strongUserValidations/" . $request_id, "GET");
+	$request = request("users/" . $user_id . "/strongUserAuthentication", "GET");
 }
 
 
@@ -38,7 +38,7 @@ $url = $request -> UrlRequest;
 	<input type="submit" name="submit" value="Envoyer" />
 </form>
 
-<a href="close_strong_auth.php?request_id=<?php echo $request -> ID;?>">Close request</a>
+<a href="close_strong_auth.php?user_id=<?php echo $user_id;?>">Close request</a>
 
 
 

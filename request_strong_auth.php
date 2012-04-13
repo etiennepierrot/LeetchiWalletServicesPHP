@@ -27,9 +27,10 @@ if ($user_id == 0) {
 	$user = request("users/" . $user_id, "GET");
 }
 
-$body = json_encode(array("UserID" => $user -> ID));
+//$body = json_encode(array("UserID" => $user -> ID));
+$body = json_encode(array());
 
-$strongUserValidation = request("strongUserValidations", "POST", $body);
+$strongUserValidation = request("users/". $user -> ID ."/strongUserAuthentication", "POST", $body);
 
 if (!isset($strongUserValidation) || !isset($strongUserValidation -> ID)) {
 	print("Error");
@@ -44,7 +45,7 @@ $url = $strongUserValidation -> UrlRequest;
 	<input type="submit" name="submit" value="Envoyer" />
 </form>
 
-<a href="close_strong_auth.php?request_id=<?php echo $strongUserValidation -> ID;?>">Close request</a>
+<a href="close_strong_auth.php?user_id=<?php echo $user -> ID;?>">Close request</a>
 
 
 

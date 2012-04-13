@@ -8,15 +8,15 @@
 
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
-$request_id = isset($_REQUEST["request_id"]) ? $_REQUEST["request_id"] : 0;
+$user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 
-if ($request_id == 0) {
-	print("Error : not parameter request_id in url");
+if ($user_id == 0) {
+	print("Error : not parameter user_id in url");
 	return;
 }
 
 $body = json_encode(array("IsDocumentsTransmitted" =>  true));
-$strongUserValidation = request("strongUserValidations/$request_id", "PUT", $body);
+$strongUserValidation = request("users/".$user_id ."/strongUserAuthentication", "PUT", $body);
 
 ?>
 
