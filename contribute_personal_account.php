@@ -1,14 +1,16 @@
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	</head>
-	<body>
-		<pre>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+        <pre>
+
 <?php
 
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
+$amount = isset($_REQUEST["amount"])? $_REQUEST["amount"] : 1000;
 
 /*
  * we fetch the user with the user_id in the URL
@@ -38,7 +40,7 @@ if (!isset($user) || !isset($user -> ID)) {
 /*
  * POST request to create a contribution on a personal account
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => 1000, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => $amount, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
 
 $contribution = request("contributions", "POST", $body);
 
@@ -53,6 +55,6 @@ if ($contribution != null) {
 
 ?>
 
-</pre>
-	</body>
+        </pre>
+    </body>
 </html>
