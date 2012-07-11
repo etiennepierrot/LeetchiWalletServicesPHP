@@ -1,6 +1,8 @@
+<?php require_once (dirname(__FILE__) . "/lib/common.inc");?>
 <html>
-	<head/>
+	<head></head>
 	<body>
+        <p>Environment : <?php echo $leetchiBaseURL;?></p>
 		<div>
 			params with * can be create if they are missing
 		</div>
@@ -50,6 +52,12 @@
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
 			<input type="submit" value="Create withdrawal" />
+		</form> 	
+        <!-- get request strongAuthentication -->
+		<form name="input" action="get_request_strong_auth.php.php" method="get">
+			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+			<input type="submit" value="get strongAuthentication" />
 		</form> 		
+	</body>	
 	</body>
 </html>
