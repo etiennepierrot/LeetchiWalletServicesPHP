@@ -17,8 +17,14 @@
 		</form> 
 		<!-- Create User & start a payment-->
 		<form name="input" action="contribute_personal_account.php" method="get">
+			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
 			<input type="submit" value="contribute personal account" />
 		</form> 
+		<!-- Create wallet --> 
+		<form name=input action="create_wallet.php" method="get">
+			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
+			<input type="submit" value="create wallet" />
+		</form>
 		<!-- Contribu on a wallet-->
 		<form name="input" action="contribute_wallet.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
@@ -58,6 +64,37 @@
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			<input type="submit" value="get strongAuthentication" />
 		</form> 		
+		<!-- get operations of user -->
+		<form name="input" action="get_operations_user.php" method="get">
+			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+			<input type="submit" value="get operations of user" />
+		</form> 		
+		<!-- get operations on personal account  -->
+		<form name="input" action="get_operations_user_personal.php" method="get">
+			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+			<input type="submit" value="get operations on personal account" />
+		</form> 
+		<!-- get operations on wallet  -->
+		<form name="input" action="get_operations_wallet.php" method="get">
+			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
+			<input type="submit" value="get operations on wallet" />
+		</form> 
+		
+		<!-- create transfer -->
+		<form name="input" action="create_transfer.php" method="get">
+			payer_id* : <input type="text" size="12" maxlength="50" name="payer_id">
+			beneficiary_id* : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+			wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
+			amount* : <input type="text" size="12" maxlength="50" name="amount">
+			<input type="submit" value="create transfer" />
+		</form> 	
+		
+		<!-- get transfer -->
+		<form name="input" action="get_transfer.php" method="get">
+			transfer_id* : <input type="text" size="12" maxlength="50" name="transfer_id">
+			<input type="submit" value="get transfer" />
+		</form> 		
+		
 	</body>	
 	</body>
 </html>
