@@ -60,7 +60,7 @@ if (!isset($wallet) || !isset($wallet -> ID)) {
 /*
  * POST request to create a contribution on a wallet
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet -> ID, "Amount" => 1000, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet -> ID, "Amount" => 1000, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => false, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
 
 $contribution = request("contributions", "POST", $body);
 

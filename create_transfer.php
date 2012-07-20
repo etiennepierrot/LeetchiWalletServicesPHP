@@ -10,6 +10,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $payer_id = isset($_REQUEST["payer_id"]) ? $_REQUEST["payer_id"] : 0;
 $beneficiary_id = isset($_REQUEST["beneficiary_id"]) ? $_REQUEST["beneficiary_id"] : 0;
+$wallet_beneficiary_id = isset($_REQUEST["wallet_beneficiary_id"]) ? $_REQUEST["wallet_beneficiary_id"] : 0;
 $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
 
 if ($payer_id == 0) {
@@ -17,8 +18,10 @@ if ($payer_id == 0) {
 	return;
 }
 
-if ($beneficiary_id == 0) {
-	print("Error : not parameter beneficiary_id in url");
+echo " :" . $beneficiary_id . " :" . $wallet_beneficiary_id;
+
+if ($beneficiary_id == 0 && $wallet_beneficiary_id == 0) {
+	print("Error : not parameter beneficiary_id nor wallet_beneficiary_id in url");
 	return;
 }
 
@@ -64,7 +67,7 @@ if ($beneficiary_id != 0) {
 }
 
 
-$body = json_encode(array("Tag" => "Custom data", "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "Amount" => $amount));
+$body = json_encode(array("Tag" => "Custom data", "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "Amount" => $amount));
 
 $transfer = request("transfers", "POST", $body);
 ?>
