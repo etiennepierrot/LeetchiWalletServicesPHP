@@ -40,7 +40,11 @@ if (!isset($user) || !isset($user -> ID)) {
 /*
  * POST request to create a contribution on a personal account
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => $amount, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+print_r  ($_SERVER["REQUEST_URI"] . "\n");
+
+print_r (str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "\n");
+
+$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => $amount, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php"));
 
 $contribution = request("contributions", "POST", $body);
 
@@ -52,7 +56,6 @@ if ($contribution != null) {
 	header("Location: " . $contribution -> PaymentURL);
 	exit();
 }
-
 ?>
 
         </pre>
