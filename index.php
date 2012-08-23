@@ -60,7 +60,7 @@
 			<input type="submit" value="Create withdrawal" />
 		</form> 	
         <!-- get request strongAuthentication -->
-		<form name="input" action="get_request_strong_auth.php.php" method="get">
+		<form name="input" action="get_request_strong_auth.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			<input type="submit" value="get strongAuthentication" />
 		</form> 		

@@ -21,7 +21,9 @@ if ($user_id == 0) {
 	/*
 	 * GET to fetch the user
 	 */
-	$request = request("users/" . $user_id . "/strongUserAuthentication", "GET");
+	 
+	 $body = json_encode(array("tag" => "Custom"));
+	$request = request("users/" . $user_id . "/strongUserAuthentication", "POST", $body);
 }
 
 
