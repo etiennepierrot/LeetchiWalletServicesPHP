@@ -30,7 +30,7 @@ if ($user_id == 0) {
 //$body = json_encode(array("UserID" => $user -> ID));
 $body = json_encode(array());
 
-$strongUserValidation = request("users/". $user -> ID ."/strongUserAuthentication", "POST", $body);
+$strongUserValidation = request("users/". $user -> ID ."/strongAuthentication", "POST", $body);
 
 if (!isset($strongUserValidation) || !isset($strongUserValidation -> ID)) {
 	print("Error");
