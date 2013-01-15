@@ -16,7 +16,7 @@ if ($user_id == 0) {
 }
 
 $body = json_encode(array("IsDocumentsTransmitted" =>  true));
-$strongUserValidation = request("users/".$user_id ."/strongUserAuthentication", "PUT", $body);
+$strongUserValidation = request("users/".$user_id ."/strongAuthentication", "PUT", $body);
 
 ?>
 
