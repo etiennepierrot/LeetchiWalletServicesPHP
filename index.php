@@ -18,6 +18,7 @@
 		<!-- Create User & start a payment-->
 		<form name="input" action="contribute_personal_account.php" method="get">
 			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
+			amount : <input type="text" size="12" maxlength="150" name="amount" value="1000"/>
 			<input type="submit" value="contribute personal account" />
 		</form> 
 		<!-- Create wallet --> 
