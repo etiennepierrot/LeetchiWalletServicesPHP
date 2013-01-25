@@ -83,18 +83,26 @@
 		
 		<!-- create transfer -->
 		<form name="input" action="create_transfer.php" method="get">
-			payer_id* : <input type="text" size="12" maxlength="50" name="payer_id">
-			beneficiary_id* : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+			payer_id : <input type="text" size="12" maxlength="50" name="payer_id">
+			beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
 			wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
-			amount* : <input type="text" size="12" maxlength="50" name="amount">
+			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
 			<input type="submit" value="create transfer" />
-		</form> 	
+		</form> 
+
+		<!-- create transfer to personal account -->
+		<form name="input" action="create_transfer_to_personal_account.php" method="get">
+			payer_id : <input type="text" size="12" maxlength="50" name="payer_id">
+			beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
+			<input type="submit" value="create transfer to personal account" />
+		</form>		
 		
 		<!-- get transfer -->
 		<form name="input" action="get_transfer.php" method="get">
 			transfer_id* : <input type="text" size="12" maxlength="50" name="transfer_id">
 			<input type="submit" value="get transfer" />
-		</form> 		
+		</form> 				
 		
 	</body>	
 	</body>
