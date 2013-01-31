@@ -17,8 +17,10 @@ $body = json_encode(array(
 		"LastName"=> "Doe", 
 		"Email" => "john.doe@unknow.com",
 		"IP" => "127.0.0.1", 
-		"CanRegisterMeanOfPayment" => "true")
-		);	
+		"CanRegisterMeanOfPayment" => "true",
+		"Nationality" => "French",
+		"PersonType" => "NATURAL_PERSON")
+		);		
 
 $user = request("users", "POST", $body);
 

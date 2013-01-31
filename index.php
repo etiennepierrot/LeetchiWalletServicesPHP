@@ -1,6 +1,32 @@
 <?php require_once (dirname(__FILE__) . "/lib/common.inc");?>
 <html>
-	<head></head>
+	<head>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript">
+$(document).ready(function(){
+				
+	$('.enter').click(function(){
+
+		$(this).next('.content').slideToggle('fast');
+
+	});
+});
+		</script>
+		<style type="text/css">
+		<!--
+			.enter {
+				background-color:#5882FA;
+				}
+			.content {
+				background-color:#CECEF6;
+				margin-bottom:10px;
+				padding:5px;
+				padding-left:20px;
+				}
+		-->
+		</style>
+		
+	</head>
 	<body>
         <p>Environment : <?php echo $leetchiBaseURL;?></p>
 		<div>
@@ -10,11 +36,25 @@
 		<div>
 			4970100000000170
 		</div>
-		<br>
-		<!-- Create User -->
-		<form name="input" action="create_user.php" method="get">
-			<input type="submit" value="Create user" />
-		</form> 
+		<div class="enter">/user</div>
+		<div class="content">
+			<!-- Create User -->
+			<form name="input" action="create_user.php" method="get">
+				<input type="submit" value="Create user" />
+			</form> 		
+			<!-- Update User -->
+			<form name="input" action="update_user.php" method="put">
+				user_id: <input type="text" size="12" maxlength="150" name="user_id"/>
+				Nationality : <input type="text" size="12" maxlength="150" name="Nationality" value="French"/>
+				PersonType : <input type="text" size="20" maxlength="150" name="PersonType" value="NATURAL_PERSON"/>
+				<input type="submit" value="update user" />
+			</form> 
+			<!-- Get User -->
+			<form name="input" action="get_user.php" method="get">
+				user_id: <input type="text" size="12" maxlength="150" name="user_id"/>
+				<input type="submit" value="get user" />
+			</form> 
+		</div>
 		<!-- Create User & start a payment-->
 		<form name="input" action="contribute_personal_account.php" method="get">
 			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
@@ -32,21 +72,24 @@
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 			<input type="submit" value="contribute wallet" />
 		</form> 
-		<!-- Create Card -->
-		<form name="input" action="create_payment_card.php" method="get">
-			user_id : <input type="text" size="12" maxlength="50" name="user_id">
-			<input type="submit" value="create payment card" />
-		</form> 
-		<!-- Delete Card -->
-		<form name="input" action="delete_card.php" method="get">
-			paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
-			<input type="submit" value="delete card" />
-		</form> 
-		<!-- get_payment_card -->
-		<form name="input" action="get_payment_card.php" method="get">
-			user_id : <input type="text" size="12" maxlength="50" name="user_id">
-			<input type="submit" value="get payment card" />
-		</form> 
+		<div class="enter">/card</div>
+		<div class="content">
+			<!-- Create Card -->
+			<form name="input" action="create_payment_card.php" method="get">
+				user_id : <input type="text" size="12" maxlength="50" name="user_id">
+				<input type="submit" value="create payment card" />
+			</form> 
+			<!-- Delete Card -->
+			<form name="input" action="delete_card.php" method="get">
+				paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
+				<input type="submit" value="delete card" />
+			</form> 
+			<!-- get_payment_card -->
+			<form name="input" action="get_payment_card.php" method="get">
+				user_id : <input type="text" size="12" maxlength="50" name="user_id">
+				<input type="submit" value="get payment card" />
+			</form> 
+		</div>
 		<!-- create Pending refund -->
 		<form name="input" action="create_pending_refund.php" method="get">
 			user_id : <input type="text" size="12" maxlength="50" name="user_id">
