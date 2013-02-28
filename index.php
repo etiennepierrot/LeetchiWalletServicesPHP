@@ -70,6 +70,13 @@ $(document).ready(function(){
 		<form name="input" action="contribute_wallet.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
+			Method : 
+			<select name="methodType">
+				<option value="cb_visa_mastercard">cb_visa_mastercard</option>
+				<option value="elv">elv</option>
+				<option value="amex">amex</option>
+			</select>
+		
 			<input type="submit" value="contribute wallet" />
 		</form> 
 		<div class="enter">/card</div>
