@@ -15,94 +15,137 @@ $(document).ready(function(){
 		<style type="text/css">
 		<!--
 			.enter {
-				background-color:#5882FA;
+                max-width: 960px;
+				background-color:#99c8ab;
+                padding-left:20px;
+                margin-left:10px;
 				}
 			.content {
-				background-color:#CECEF6;
+                max-width: 960px;
+				background-color:#E7F6EC;
 				margin-bottom:10px;
+                margin-left:10px;
 				padding:5px;
-				padding-left:20px;
+				padding-left:40px;
 				}
+      nput[type=submit] {
+            text-transform: uppercase;
+            background-color: rgb(16, 165, 74);
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            width: 50px;
+            font-size: 0.7em;
+            text-align: center;
+            padding: 7px 0px 4px;
+            border-radius: 2px 2px 2px 2px;
+      }
 		-->
 		</style>
 		
 	</head>
 	<body>
         <p>Environment : <?php echo $leetchiBaseURL;?></p>
-		<div>
-			params with * can be create if they are missing
-		</div>
-		<br>
-		<div>
-			4970100000000170
-		</div>
+        <p>
+		    <div>
+			    params with * can be create if they are missing<br>
+                params in <i>italic</i> are optional<br>
+                4970100000000170<br>
+		    </div>
+        </p>
 		<div class="enter">/user</div>
 		<div class="content">
 			<!-- Create User -->
 			<form name="input" action="create_user.php" method="get">
-				<input type="submit" value="Create user" />
+				<input type="submit" value="POST" /> Create a user
 			</form> 		
 			<!-- Update User -->
 			<form name="input" action="update_user.php" method="put">
+                <input type="submit" value="PUT" />
 				user_id: <input type="text" size="12" maxlength="150" name="user_id"/>
 				Nationality : <input type="text" size="12" maxlength="150" name="Nationality" value="French"/>
-				PersonType : <input type="text" size="20" maxlength="150" name="PersonType" value="NATURAL_PERSON"/>
-				<input type="submit" value="update user" />
+				PersonType : 
+				<select name="PersonType">
+					<option value="NATURAL_PERSON">NATURAL_PERSON</option>
+					<option value="LEGAL_PERSONALITY">LEGAL_PERSONALITY</option>
+				</select>
 			</form> 
 			<!-- Get User -->
 			<form name="input" action="get_user.php" method="get">
+                <input type="submit" value="GET" />
 				user_id: <input type="text" size="12" maxlength="150" name="user_id"/>
-				<input type="submit" value="get user" />
 			</form> 
 		</div>
-		<!-- Create User & start a payment-->
-		<form name="input" action="contribute_personal_account.php" method="get">
-			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
-			amount : <input type="text" size="12" maxlength="150" name="amount" value="1000"/>
-			<input type="submit" value="contribute personal account" />
-		</form> 
-		<!-- Create wallet --> 
-		<form name=input action="create_wallet.php" method="get">
-			user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
-			<input type="submit" value="create wallet" />
-		</form>
-		<!-- Contribu on a wallet-->
-		<form name="input" action="contribute_wallet.php" method="get">
-			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
-			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
-			Method : 
-			<select name="methodType">
-				<option value="cb_visa_mastercard">cb_visa_mastercard</option>
-				<option value="elv">elv</option>
-				<option value="amex">amex</option>
-			</select>
-		
-			<input type="submit" value="contribute wallet" />
-		</form> 
+		<div class="enter">/contributions</div>
+		<div class="content">
+			<!-- Create User & start a payment-->
+			<form name="input" action="contribute_personal_account.php" method="get">
+				<input type="submit" value="POST" />
+				user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
+				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000"/>
+			</form> 
+			<!-- Contribu on a wallet-->
+			<form name="input" action="contribute_wallet.php" method="get">
+				<input type="submit" value="POST" />
+				user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+				wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
+				Method : 
+				<select name="methodType">
+					<option value="cb_visa_mastercard">cb_visa_mastercard</option>
+					<option value="elv">elv</option>
+					<option value="amex">amex</option>
+				</select>
+			</form> 
+		</div>		
+        <div class="enter">/contributions-by-withdrawal</div>
+		<div class="content">
+            <!-- Get contributions-by-withdrawal -->
+			<form name="input" action="get_contribute_by_withdrawal.php" method="get">
+                <input type="submit" value="GET" />
+				contribution_id: <input type="text" size="12" maxlength="150" name="contribution_id"/>
+			</form> 
+			<form name="input" action="contribute_by_withdrawal_personal_account.php" method="get">
+                <input type="submit" value="POST" />
+				user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
+                <i>wallet_id</i> : <input type="text" size="12" maxlength="150" name="wallet_id"/>
+				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000"/>
+			</form> 
+		</div>
+        <div class="enter">/wallet</div>
+		<div class="content">		
+		    <!-- Create wallet --> 
+			<form name=input action="create_wallet.php" method="get">
+				<input type="submit" value="POST" />
+				user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
+			</form>
+        </div>
 		<div class="enter">/card</div>
 		<div class="content">
 			<!-- Create Card -->
 			<form name="input" action="create_payment_card.php" method="get">
+                <input type="submit" value="POST" />
 				user_id : <input type="text" size="12" maxlength="50" name="user_id">
-				<input type="submit" value="create payment card" />
 			</form> 
 			<!-- Delete Card -->
 			<form name="input" action="delete_card.php" method="get">
+                <input type="submit" value="DELETE" />
 				paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
-				<input type="submit" value="delete card" />
 			</form> 
 			<!-- get_payment_card -->
 			<form name="input" action="get_payment_card.php" method="get">
+                <input type="submit" value="GET" />
 				user_id : <input type="text" size="12" maxlength="50" name="user_id">
-				<input type="submit" value="get payment card" />
 			</form> 
 		</div>
-		<!-- create Pending refund -->
-		<form name="input" action="create_pending_refund.php" method="get">
-			user_id : <input type="text" size="12" maxlength="50" name="user_id">
-			contribution_id : <input type="text" size="12" maxlength="50" name="contribution_id">
-			<input type="submit" value="Create pending refund" />
-		</form> 
+        <div class="enter">/refund</div>
+		<div class="content">
+		    <!-- create Pending refund -->
+		    <form name="input" action="create_pending_refund.php" method="get">
+                <input type="submit" value="POST" />
+			    user_id : <input type="text" size="12" maxlength="50" name="user_id">
+			    contribution_id : <input type="text" size="12" maxlength="50" name="contribution_id">
+		    </form> 
+        </div>
 		<!-- create withdrawal -->
 		<form name="input" action="create_withdrawal.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
