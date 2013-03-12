@@ -11,6 +11,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $amount = isset($_REQUEST["amount"])? $_REQUEST["amount"] : 1000;
+    $registercard = isset($_REQUEST["registercard"]) ? $_REQUEST["registercard"] : false;
 
 /*
  * we fetch the user with the user_id in the URL
@@ -44,7 +45,7 @@ print_r  ($_SERVER["REQUEST_URI"] . "\n");
 
 print_r (str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "\n");
 
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => $amount, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => true, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $user -> ID, "Amount" => $amount, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => $registercard, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php"));
 
 $contribution = request("contributions", "POST", $body);
 
