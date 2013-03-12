@@ -83,7 +83,7 @@ $(document).ready(function(){
 				<input type="submit" value="POST" />
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id"/>
 				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000"/>
-                register card ? : <input name="registercard" type="checkbox" value="selected"/>
+                register card ? : <input name="registercard" type="checkbox" />
 			</form> 
 			<!-- Contribu on a wallet-->
 			<form name="input" action="contribute_wallet.php" method="get">
