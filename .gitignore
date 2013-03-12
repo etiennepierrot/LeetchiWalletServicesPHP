@@ -5,3 +5,4 @@ lib/config.inc
 *.pem
 *.project
 test/
+robots.txt
