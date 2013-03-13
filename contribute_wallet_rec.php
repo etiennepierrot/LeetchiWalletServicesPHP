@@ -38,8 +38,12 @@ if (!isset($user) || !isset($user -> ID)) {
 	print("Error");
 	return;
 }
+
+echo "test1";
 $startdate = new DateTime($startdateStr);
+echo "test2";
 $startdateTS =  $startdate->getTimestamp();
+echo "test3";
 
 
 /*
