@@ -33,7 +33,7 @@ if ($recurrent_contribution_id != 0) {
 
 
 
-$body = json_encode(array("Enabled" => 0));
+$body = json_encode(array("IsEnabled" => 0));
 
 $refund = request("recurrent-contributions/$recurrent_contribution_id", "PUT", $body);
 
