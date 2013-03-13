@@ -38,11 +38,10 @@ if (!isset($user) || !isset($user -> ID)) {
 	print("Error");
 	return;
 }
-
-;
 $startdate = new DateTime($startdateStr);
 $startdateTS =  $startdate->getTimestamp();
-echo $startdateTS;
+
+
 /*
  * POST request to create a contribution on a wallet
  */
