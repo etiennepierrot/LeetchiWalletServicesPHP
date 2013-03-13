@@ -112,7 +112,8 @@
 				user_id: <input type="text" size="12" maxlength="150" name="user_id" />
                 wallet_id: <input type="text" size="12" maxlength="150" name="wallet_id" />
                 amount: <input type="text" size="12" maxlength="150" name="amount" />
-                startdate (Y-M-d): <input type="text" size="12" maxlength="150" name="startdateStr" />
+                clientFeeAmount: <input type="text" size="12" maxlength="150" name="clientFeeAmount" />
+                startdate (timestamp): <input type="text" size="12" maxlength="150" name="datets" />
                 FrequencyCode:
                 <select name="FrequencyCode">
                     <option value="Daily">Daily</option>
