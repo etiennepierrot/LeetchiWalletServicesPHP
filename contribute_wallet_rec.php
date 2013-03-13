@@ -10,6 +10,10 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
+$amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
+$startdateStr =  isset($_REQUEST["startdateStr"]) ? $_REQUEST["startdateStr"] : 0;
+$FrequencyCode =  isset($_REQUEST["FrequencyCode"]) ? $_REQUEST["FrequencyCode"] : 0;
+$NumberOfExecutions =  isset($_REQUEST["NumberOfExecutions"]) ? $_REQUEST["NumberOfExecutions"] : 0;
 
 /* we fetch the user with the user_id in the URL
  * else we create the user
@@ -35,36 +39,14 @@ if (!isset($user) || !isset($user -> ID)) {
 	return;
 }
 
-/* we fetch the wallet with the wallet_id in the URL
- * else we create the wallet
- */
-
-if ($wallet_id == 0) {
-	/*
-	 * POST request to create a wallet
-	 */
-	$body = json_encode(array("Owners" => array($user -> ID)));
-	$wallet = request("wallets", "POST", $body);
-} else {
-	/*
-	 * GET to fetch the wallet
-	 */
-	$wallet = request("wallets/" . $wallet_id, "GET");
-}
-
-if (!isset($wallet) || !isset($wallet -> ID)) {
-	print("Error");
-	return;
-}
-
-
-$startdate = new DateTime('2012/6/1');
+;
+$startdate = new DateTime($startdateStr);
 $startdateTS =  $startdate->getTimestamp();
-
+echo $startdateTS;
 /*
  * POST request to create a contribution on a wallet
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet -> ID, "Amount" => 1000, "StartDate" => $startdateTS, "FrequencyCode" => "Daily", "NumberOfExecutions" => 3,  "ClientFeeAmount" => "0", "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet_id, "Amount" => $amount, "StartDate" => $startdateTS, "FrequencyCode" => $FrequencyCode, "NumberOfExecutions" => $NumberOfExecutions,  "ClientFeeAmount" => "0", "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
 
 $contribution = request("recurrent-contributions", "POST", $body);
 

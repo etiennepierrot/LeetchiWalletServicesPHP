@@ -13,7 +13,7 @@ $recurrent_contribution_id = isset($_REQUEST["recurrent_contribution_id"]) ? $_R
 
 if($recurrent_contribution_id != 0)
 {
-	$recurrentcontribution = request("recurrent-contributions/$recurrent_contribution_id", "GET");
+	$recurrentcontributionexec = request("recurrent-contributions/$recurrent_contribution_id/executions", "GET");	
 }
 
 ?>
