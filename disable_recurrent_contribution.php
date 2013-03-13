@@ -1,4 +1,4 @@
-<?php<html>
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
@@ -14,7 +14,6 @@ if ($recurrent_contribution_id == 0) {
 	print("Error : not parameter recurrent_contribution_id in url");
 	return;
 }
-
 
 /* 
  * we fetch the recurrent contribution with the recurrent_contribution_id in the URL
