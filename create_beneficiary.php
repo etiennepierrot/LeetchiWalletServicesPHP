@@ -8,16 +8,29 @@
 
 require_once(dirname(__FILE__) . "/lib/common.inc");
 
+print("TOTO");
+
+$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "iban", "bic");
+
+print($parameters);
 
 /*
  * POST request to create a beneficiary
  */	 
-$body = json_encode(array("Tag" => "Custom data", 
-						"BankAccountOwnerName" => "Test Name", 
-						"BankAccountOwnerAddress" => "Test Address", 
-						"BankAccountIBAN" => "FR30 2004 1010 1245 3072 5S03 383", 
-						"BankAccountBIC" => "CRLYFRPP"));
 
+// Create params
+$array = array("Tag" => "Custom data");
+for ($i = 0; $i < $count; $i++) {
+    if(!asset($_REQUEST[$parameters[$i]]))
+        $array[$parameters[$i]] = $_REQUEST[$parameters[$i]]
+}
+
+print($array);
+
+// Convert format
+$body = json_encode($array);
+
+// execute request
 $beneficiary = request("beneficiaries", "POST", $body);
 	
 if( !isset($beneficiary) || !isset($beneficiary->ID)) {
