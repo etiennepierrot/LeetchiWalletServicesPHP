@@ -193,8 +193,17 @@
                 execution_id : <input type="text" size="12" maxlength="50" name="execution_id">
             </form>
         </div>
-        <!-- create withdrawal -->
-        <form name="input" action="create_withdrawal.php" method="get">
+        <div class="enter">/beneficiaries</div>
+		<div class="content">
+            <!-- Post beneficiaries -->
+			<form name="input" action="create_beneficiary.php" method="get">
+                <input type="submit" value="POST" />
+                BIC : <input type="text" size="12" maxlength="50" name="bic" value="CRLYFRPP">
+			    IBAN : <input type="text" size="12" maxlength="34" name="iban" value="FR3020041010124530725S03383">
+			</form> 
+		</div>
+		<!-- create withdrawal -->
+		<form name="input" action="create_withdrawal.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
