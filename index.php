@@ -1,7 +1,7 @@
 <?php require_once (dirname(__FILE__) . "/lib/common.inc");?>
 <html>
     <head>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
         <script type="text/javascript">
             $(document).ready(function(){
             
@@ -155,6 +155,22 @@
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
                 <i>wallet_id</i> : <input type="text" size="12" maxlength="150" name="wallet_id" />
 				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
+            </form>
+        </div>
+        <div class="enter">/immediate-contributions</div>
+        <div class="content">
+            <!-- Get immediate-contributions -->
+            <form name="input" action="get_immediate_contribution.php" method="get">
+                <input type="submit" value="GET" />
+				get_immediate_contribution: <input type="text" size="12" maxlength="150" name="immediate_contribution_id" />
+            </form>
+            <form name="input" action="create_immediate_contribution.php" method="get">
+                <input type="submit" value="POST" />
+				user_id : <input type="text" size="12" maxlength="150" name="user_id" />
+                wallet_id : <input type="text" size="12" maxlength="150" name="wallet_id" />
+                paymentCard_id : <input type="text" size="12" maxlength="150" name="paymentCard_id" value="0" />
+				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
+                clientFeeAmount : <input type="text" size="12" maxlength="150" name="clientFeeAmount" value="0" />
             </form>
         </div>
         <div class="enter">/wallet</div>
