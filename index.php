@@ -210,18 +210,30 @@
             </form>
         </div>
         <div class="enter">/beneficiaries</div>
-		<div class="content">
+        <div class="content">
             <!-- Post beneficiaries -->
-			<form name="input" action="create_beneficiary.php" method="get">
+            <form name="input" action="create_beneficiary.php" method="get">
                 <input type="submit" value="POST" />
                 BIC : <input type="text" size="12" maxlength="50" name="bic" value="CRLYFRPP">
 			    IBAN : <input type="text" size="12" maxlength="34" name="iban" value="FR3020041010124530725S03383">
                 BankAccountOwnerName : <input type="text" size="12" maxlength="100" name="BankAccountOwnerName" value="Nom par defaut">
                 BankAccountOwnerAddress : <input type="text" size="12" maxlength="100" name="BankAccountOwnerAddress" value="Adresse par defaut">
-			</form> 
-		</div>
-		<!-- create withdrawal -->
-		<form name="input" action="create_withdrawal.php" method="get">
+            </form>
+        </div>
+        <div class="enter">/transfers</div>
+        <div class="content">
+            <!-- create transfer -->
+            <form name="input" action="create_transfer.php" method="get">
+			payer_id : <input type="text" size="12" maxlength="50" name="payer_id">
+			beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+			wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
+            wallet_payer_id : <input type="text" size="12" maxlength="50" name="wallet_payer_id">
+			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
+                <input type="submit" value="create transfer" />
+            </form>
+        </div>
+        <!-- create withdrawal -->
+        <form name="input" action="create_withdrawal.php" method="get">
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
@@ -248,14 +260,7 @@
             <input type="submit" value="get operations on wallet" />
         </form>
 
-        <!-- create transfer -->
-        <form name="input" action="create_transfer.php" method="get">
-			payer_id : <input type="text" size="12" maxlength="50" name="payer_id">
-			beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
-			wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
-			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
-            <input type="submit" value="create transfer" />
-        </form>
+
 
         <!-- create transfer to personal account -->
         <form name="input" action="create_transfer_to_personal_account.php" method="get">
