@@ -62,7 +62,7 @@
 				Tag: <input type="text" size="12" maxlength="150" name="Tag" value="DefaultTag"/>
 				Email: <input type="text" size="12" maxlength="150" name="Email" value="DefaultMail@unknow.com"/>
 				FirstName: <input type="text" size="12" maxlength="150" name="FirstName" value="DefaultFirstName"/>
-				Lastname: <input type="text" size="12" maxlength="150" name="Lastname" value="DefaultLastName"/>
+				LastName: <input type="text" size="12" maxlength="150" name="LastName" value="DefaultLastName"/>
 				CanRegisterMeanOfPayment: <input type="text" size="12" maxlength="150" name="CanRegisterMeanOfPayment" value="true"/>
 				IP: <input type="text" size="12" maxlength="150" name="IP" value="127.0.0.1"/>
 				Birthday: <input type="text" size="12" maxlength="150" name="Birthday"/>
