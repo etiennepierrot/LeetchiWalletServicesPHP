@@ -13,7 +13,7 @@ $beneficiary_id = isset($_REQUEST["beneficiary_id"]) ? $_REQUEST["beneficiary_id
 $wallet_beneficiary_id = isset($_REQUEST["wallet_beneficiary_id"]) ? $_REQUEST["wallet_beneficiary_id"] : 0;
 $wallet_payer_id = isset($_REQUEST["wallet_payer_id"]) ? $_REQUEST["wallet_payer_id"] : 0;
 $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
-
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 
 echo " :" . $beneficiary_id . " :" . $wallet_beneficiary_id;
@@ -65,7 +65,7 @@ if ($beneficiary_id != 0) {
 }
 
 
-$body = json_encode(array("Tag" => "Custom data", "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount));
+$body = json_encode(array("Tag" => "Custom data", "Tag" => $tag, "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount));
 
 $transfer = request("transfers", "POST", $body);
 ?>

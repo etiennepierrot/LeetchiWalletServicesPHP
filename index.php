@@ -106,7 +106,7 @@
                         <input type="submit" value="GET" />
 			            user_id* : <input type="text" size="12" maxlength="50" name="user_id">
                     </form>
-        </div>
+                </div>
             </div>
         </div>
         <div class="enter">/contributions</div>
@@ -121,6 +121,7 @@
                 <input type="submit" value="POST" />
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
 				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
             <!-- Contribu on a wallet-->
             <form name="input" action="contribute_wallet.php" method="get">
@@ -133,6 +134,7 @@
                     <option value="elv">elv</option>
                     <option value="amex">amex</option>
                 </select>
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <div class="enter">/recurrent-contributions</div>
@@ -164,23 +166,22 @@
                     <option value="Biannual">Biannual</option>
                 </select>
                 NumberOfExecutions: <input type="text" size="12" maxlength="150" name="NumberOfExecutions" />
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
             <!-- Disable recurrent-contribution-->
             <form name="input" action="disable_recurrent_contribution.php" method="get">
                 <input type="submit" value="DISABLE" />
 				recurrent_contribution_id: <input type="text" size="12" maxlength="150" name="recurrent_contribution_id" />
             </form>
+            <div class="enter">/recurrent-contributions/{}/executions</div>
+            <div class="content">
+                <!-- get a recurrent-contribution-->
+                <form name="input" action="get_recurrent_contribution_executions.php" method="get">
+                    <input type="submit" value="GET" />
+				    recurrent_contribution_id: <input type="text" size="12" maxlength="150" name="recurrent_contribution_id" />
+                </form>
+            </div>
         </div>
-
-        <div class="enter">/recurrent-contributions/{}/executions</div>
-        <div class="content">
-            <!-- get a recurrent-contribution-->
-            <form name="input" action="get_recurrent_contribution_executions.php" method="get">
-                <input type="submit" value="GET" />
-				recurrent_contribution_id: <input type="text" size="12" maxlength="150" name="recurrent_contribution_id" />
-            </form>
-        </div>
-
         <div class="enter">/contributions-by-withdrawal</div>
         <div class="content">
             <!-- Get contributions-by-withdrawal -->
@@ -193,6 +194,7 @@
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
                 <i>wallet_id</i> : <input type="text" size="12" maxlength="150" name="wallet_id" />
 				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <div class="enter">/immediate-contributions</div>
@@ -209,6 +211,7 @@
                 paymentCard_id : <input type="text" size="12" maxlength="150" name="paymentCard_id" value="0" />
 				amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
                 clientFeeAmount : <input type="text" size="12" maxlength="150" name="clientFeeAmount" value="0" />
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <div class="enter">/wallet</div>
@@ -217,6 +220,7 @@
             <form name="input" action="create_wallet.php" method="get">
                 <input type="submit" value="POST" />
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
             <div class="enter">/wallet/{wallet_id}/operations</div>
             <div class="content">
@@ -233,6 +237,7 @@
             <form name="input" action="create_payment_card.php" method="get">
                 <input type="submit" value="POST" />
 				user_id : <input type="text" size="12" maxlength="50" name="user_id">
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
             <!-- Delete Card -->
             <form name="input" action="delete_card.php" method="get">
@@ -253,6 +258,7 @@
 			    user_id : <input type="text" size="12" maxlength="50" name="user_id">
 			    contribution_id : <input type="text" size="12" maxlength="50" name="contribution_id">
                 execution_id : <input type="text" size="12" maxlength="50" name="execution_id">
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <div class="enter">/beneficiaries</div>
@@ -264,18 +270,20 @@
 			    IBAN : <input type="text" size="12" maxlength="34" name="iban" value="FR3020041010124530725S03383">
                 BankAccountOwnerName : <input type="text" size="12" maxlength="100" name="BankAccountOwnerName" value="Nom par defaut">
                 BankAccountOwnerAddress : <input type="text" size="12" maxlength="100" name="BankAccountOwnerAddress" value="Adresse par defaut">
+                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <div class="enter">/transfers</div>
         <div class="content">
             <!-- create transfer -->
             <form name="input" action="create_transfer.php" method="get">
+            <input type="submit" value="POST" />
 			payer_id : <input type="text" size="12" maxlength="50" name="payer_id">
 			beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
 			wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
             wallet_payer_id : <input type="text" size="12" maxlength="50" name="wallet_payer_id">
 			amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
-                <input type="submit" value="create transfer" />
+            Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
         </div>
         <!-- create withdrawal -->

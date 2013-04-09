@@ -11,6 +11,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 $contribution_id = isset($_REQUEST["contribution_id"]) ? $_REQUEST["contribution_id"] : 0;
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $execution_id = isset($_REQUEST["execution_id"]) ? $_REQUEST["execution_id"] : 0;
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 if ($contribution_id == 0 && $execution_id ==0) {
 	print("Error : not parameter contribution_id or execution_id in url");
@@ -55,7 +56,8 @@ if ($contribution_id != 0) {
 
 $body = json_encode(array("Tag" => "Custom data", 
 						  "ContributionID" =>  $contribution_id != 0 ? $contribution_id : $execution_id, 
-						  "UserID" => $user_id));
+						  "UserID" => $user_id, 
+                          "Tag" => $tag));
 
 $refund = request("refunds", "POST", $body);
 ?>

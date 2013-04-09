@@ -15,6 +15,7 @@ $datets =  isset($_REQUEST["datets"]) ? $_REQUEST["datets"] : 0;
 $FrequencyCode =  isset($_REQUEST["FrequencyCode"]) ? $_REQUEST["FrequencyCode"] : 0;
 $NumberOfExecutions =  isset($_REQUEST["NumberOfExecutions"]) ? $_REQUEST["NumberOfExecutions"] : 0;
 $clientFeeAmount = isset($_REQUEST["clientFeeAmount"]) ? $_REQUEST["clientFeeAmount"] : 0;
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 /* we fetch the user with the user_id in the URL
  * else we create the user
  */
@@ -43,7 +44,9 @@ if (!isset($user) || !isset($user -> ID)) {
 /*
  * POST request to create a contribution on a wallet
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet_id, "Amount" => $amount, "StartDate" => $datets, "FrequencyCode" => $FrequencyCode, "NumberOfExecutions" => $NumberOfExecutions,  "ClientFeeAmount" => $clientFeeAmount, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, 
+            "Tag" => $tag, 
+            "WalletID" => $wallet_id, "Amount" => $amount, "StartDate" => $datets, "FrequencyCode" => $FrequencyCode, "NumberOfExecutions" => $NumberOfExecutions,  "ClientFeeAmount" => $clientFeeAmount, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
 
 $contribution = request("recurrent-contributions", "POST", $body);
 

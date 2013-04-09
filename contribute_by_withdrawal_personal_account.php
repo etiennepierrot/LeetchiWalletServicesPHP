@@ -12,7 +12,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
 $amount = isset($_REQUEST["amount"])? $_REQUEST["amount"] : 1000;
-
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 /*
  * we fetch the user with the user_id in the URL
@@ -46,13 +46,13 @@ if($wallet_id == 0){
      * POST request to create a contribution-by-withdrawal on a personal account
      */
     print("POST request to create a contribution-by-withdrawal on a personal account");
-    $body = json_encode(array("UserID" => $user -> ID, "AmountDeclared" => $amount, "Tag" => "test"));
+    $body = json_encode(array("UserID" => $user -> ID, "AmountDeclared" => $amount, "Tag" => $tag));
 } else {
     /*
      * POST request to create a contribution-by-withdrawal on a wallet
      */
     print("POST request to create a contribution-by-withdrawal on a wallet");
-    $body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet_id, "AmountDeclared" => $amount, "Tag" => "test"));    
+    $body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet_id, "AmountDeclared" => $amount, "Tag" => $tag));    
 }
 
 

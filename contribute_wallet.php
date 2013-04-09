@@ -9,6 +9,7 @@
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
 
 $PaymentMethodType = isset($_REQUEST["methodType"]) ? $_REQUEST["methodType"] : "cb_visa_mastercard";
@@ -37,10 +38,40 @@ if (!isset($user) || !isset($user -> ID)) {
 	return;
 }
 
+/* we fetch the wallet with the wallet_id in the URL
+ * else we create the wallet
+ */
+
+if ($wallet_id == 0) {
+	/*
+	 * POST request to create a wallet
+	 */
+	$body = json_encode(array("Owners" => array($user -> ID)));
+	$wallet = request("wallets", "POST", $body);
+} else {
+	/*
+	 * GET to fetch the wallet
+	 */
+	$wallet = request("wallets/" . $wallet_id, "GET");
+}
+
+if (!isset($wallet) || !isset($wallet -> ID)) {
+	print("Error");
+	return;
+}
+
 /*
  * POST request to create a contribution on a wallet
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet_id, "Amount" => 1000, "ClientFeeAmount" => "0", "RegisterMeanOfPayment" => false, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php", "PaymentMethodType" => $PaymentMethodType));
+
+$body = json_encode(array("UserID" => $user -> ID,
+                          "WalletID" => $wallet_id,
+                          "Amount" => 1000,
+                          "ClientFeeAmount" => "0",
+                          "Tag" => $tag,
+                          "RegisterMeanOfPayment" => false, 
+                          "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php",
+                          "PaymentMethodType" => $PaymentMethodType));
 
 $contribution = request("contributions", "POST", $body);
 

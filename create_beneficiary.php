@@ -10,7 +10,8 @@ require_once(dirname(__FILE__) . "/lib/common.inc");
 
 print("TOTO");
 
-$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "iban", "bic");
+$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "iban", "bic", "tag");
+
 
 print($parameters);
 
