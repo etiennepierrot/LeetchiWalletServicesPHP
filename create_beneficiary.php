@@ -10,23 +10,15 @@ require_once(dirname(__FILE__) . "/lib/common.inc");
 
 print("TOTO");
 
-$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "iban", "bic", "tag");
+$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "BankAccountIBAN", "BankAccountBIC", "Tag");
 
 
-print($parameters);
-
-/*
- * POST request to create a beneficiary
- */	 
-
-// Create params
-$array = array("Tag" => "Custom data");
-for ($i = 0; $i < $count; $i++) {
-    if(!asset($_REQUEST[$parameters[$i]]))
-        $array[$parameters[$i]] = $_REQUEST[$parameters[$i]]
+$array = array();
+for ($i = 0; $i < count($parameters) ; $i++) {
+    if(isset($_REQUEST[$parameters[$i]]) && $_REQUEST[$parameters[$i]] != "<nil>"){
+        $array[$parameters[$i]] = $_REQUEST[$parameters[$i]];
+    }
 }
-
-print($array);
 
 // Convert format
 $body = json_encode($array);

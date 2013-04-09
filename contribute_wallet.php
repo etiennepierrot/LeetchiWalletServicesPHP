@@ -48,6 +48,7 @@ if ($wallet_id == 0) {
 	 */
 	$body = json_encode(array("Owners" => array($user -> ID)));
 	$wallet = request("wallets", "POST", $body);
+    $wallet_id = $wallet -> ID;
 } else {
 	/*
 	 * GET to fetch the wallet
