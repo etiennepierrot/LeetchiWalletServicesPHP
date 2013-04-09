@@ -8,19 +8,18 @@
 
 require_once(dirname(__FILE__) . "/lib/common.inc");
 
+// Retrieve parameters
+$parameters = array("Tag", "FirstName", "LastName", "Email", "Nationality", "PersonType", "CanRegisterMeanOfPayment", "IP", "Password");
 
-/*
- * POST request to create a user
- */	 
-$body = json_encode(array(
-		"FirstName" => "John", 
-		"LastName"=> "Doe", 
-		"Email" => "john.doe@unknow.com",
-		"IP" => "127.0.0.1", 
-		"CanRegisterMeanOfPayment" => "true",
-		"Nationality" => "French",
-		"PersonType" => "NATURAL_PERSON")
-		);		
+$array = array();
+for ($i = 0; $i < count($parameters) ; $i++) {
+    if(isset($_REQUEST[$parameters[$i]]) && $_REQUEST[$parameters[$i]] != "<nil>"){
+        $array[$parameters[$i]] = $_REQUEST[$parameters[$i]];
+    }
+}
+
+// Convert format
+$body = json_encode($array);
 
 $user = request("users", "POST", $body);
 
@@ -28,7 +27,6 @@ if( !isset($user) || !isset($user->ID)) {
 	print("Error");
 	return;
 }
-
 
 ?>
 

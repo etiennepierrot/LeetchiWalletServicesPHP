@@ -46,6 +46,7 @@
     </head>
     <body>
         <p>Environment : <?php echo $leetchiBaseURL;?></p>
+        <p>Partner : <?php echo $partnerID;?></p>
         <p>
             <div>
 			    params with * can be create if they are missing<br>
@@ -57,7 +58,23 @@
         <div class="content">
             <!-- Create User -->
             <form name="input" action="create_user.php" method="get">
-                <input type="submit" value="POST" /> Create a user
+                <input type="submit" value="POST" />
+				Tag: <input type="text" size="12" maxlength="150" name="Tag" value="DefaultTag"/>
+				Email: <input type="text" size="12" maxlength="150" name="Email" value="DefaultMail@unknow.com"/>
+				FirstName: <input type="text" size="12" maxlength="150" name="FirstName" value="DefaultFirstName"/>
+				Lastname: <input type="text" size="12" maxlength="150" name="Lastname" value="DefaultLastName"/>
+				CanRegisterMeanOfPayment: <input type="text" size="12" maxlength="150" name="CanRegisterMeanOfPayment" value="true"/>
+				IP: <input type="text" size="12" maxlength="150" name="IP" value="127.0.0.1"/>
+				Birthday: <input type="text" size="12" maxlength="150" name="Birthday"/>
+				Password: <input type="text" size="12" maxlength="150" name="Password" value="123456789azerty"/>
+				Nationality: <input type="text" size="12" maxlength="150" name="Nationality" value="French" />
+				PersonType :
+				<select name="PersonType">
+					<option value="NATURAL_PERSON">NATURAL_PERSON</option>
+					<option value="LEGAL_PERSONALITY">LEGAL_PERSONALITY</option>
+                    <option value="ERROR_VALUE_TYPE">ERROR_VALUE_TYPE</option>
+                    <option value="<nil>">NO_VALUE</option>
+				</select>
             </form>
             <!-- Update User -->
             <form name="input" action="update_user.php" method="put">
@@ -75,9 +92,30 @@
                 <input type="submit" value="GET" />
 				user_id: <input type="text" size="12" maxlength="150" name="user_id" />
             </form>
+            <div class="enter">/user/{user_id}/operations</div>
+            <div class="content">
+                <!-- get operations of user -->
+                <form name="input" action="get_operations_user.php" method="get">
+                    <input type="submit" value="GET" />
+			        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+                <div class="enter">/user/{user_id}/operations/personal</div>
+                <div class="content">
+                    <!-- get operations on personal account  -->
+                    <form name="input" action="get_operations_user_personal.php" method="get">
+                        <input type="submit" value="GET" />
+			            user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                    </form>
+        </div>
+            </div>
         </div>
         <div class="enter">/contributions</div>
         <div class="content">
+            <!-- get contribution by id-->
+            <form name="input" action="get_contribution.php" method="get">
+                <input type="submit" value="GET" />
+				contribution_id: <input type="text" size="12" maxlength="150" name="contribution_id" />
+            </form>
             <!-- Create User & start a payment-->
             <form name="input" action="contribute_personal_account.php" method="get">
                 <input type="submit" value="POST" />
@@ -180,6 +218,14 @@
                 <input type="submit" value="POST" />
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
             </form>
+            <div class="enter">/wallet/{wallet_id}/operations</div>
+            <div class="content">
+                <!-- get operations on wallet  -->
+                <form name="input" action="get_operations_wallet.php" method="get">
+                    <input type="submit" value="GET" />
+			        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                </form>
+        </div>
         </div>
         <div class="enter">/card</div>
         <div class="content">
@@ -244,22 +290,6 @@
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
             <input type="submit" value="get strongAuthentication" />
         </form>
-        <!-- get operations of user -->
-        <form name="input" action="get_operations_user.php" method="get">
-			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
-            <input type="submit" value="get operations of user" />
-        </form>
-        <!-- get operations on personal account  -->
-        <form name="input" action="get_operations_user_personal.php" method="get">
-			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
-            <input type="submit" value="get operations on personal account" />
-        </form>
-        <!-- get operations on wallet  -->
-        <form name="input" action="get_operations_wallet.php" method="get">
-			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
-            <input type="submit" value="get operations on wallet" />
-        </form>
-
 
 
         <!-- create transfer to personal account -->
