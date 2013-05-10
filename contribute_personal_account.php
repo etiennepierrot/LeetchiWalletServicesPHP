@@ -13,7 +13,7 @@ $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $amount = isset($_REQUEST["amount"])? $_REQUEST["amount"] : 1000;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 $registercard = isset($_REQUEST["registercard"]) ? ($_REQUEST["registercard"] == "selected" ? true : false) : false;
-
+$PaymentCardID = isset($_REQUEST["PaymentCardID"])? $_REQUEST["PaymentCardID"] : "0";
 /*
  * we fetch the user with the user_id in the URL
  * else we create the user
@@ -52,6 +52,7 @@ $body = json_encode(array("UserID" => $user -> ID,
                           "ClientFeeAmount" => "0",
                           "RegisterMeanOfPayment" => $registercard, 
                           "Tag" => $tag, 
+                          "PaymentCardID" => $PaymentCardID, 
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php")
                           );
 

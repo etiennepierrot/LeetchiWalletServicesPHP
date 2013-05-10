@@ -11,7 +11,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
-
+$registercard = isset($_REQUEST["registercard"]) ? ($_REQUEST["registercard"] == "on" ? true : false) : false;
 $PaymentMethodType = isset($_REQUEST["methodType"]) ? $_REQUEST["methodType"] : "cb_visa_mastercard";
 
 /* we fetch the user with the user_id in the URL
@@ -70,7 +70,7 @@ $body = json_encode(array("UserID" => $user -> ID,
                           "Amount" => 1000,
                           "ClientFeeAmount" => "0",
                           "Tag" => $tag,
-                          "RegisterMeanOfPayment" => false, 
+                          "RegisterMeanOfPayment" => $registercard, 
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php",
                           "PaymentMethodType" => $PaymentMethodType));
 
@@ -81,7 +81,7 @@ $contribution = request("contributions", "POST", $body);
  */
 
 if ($contribution != null) {
-	header("Location: " . $contribution -> PaymentURL);
+	//header("Location: " . $contribution -> PaymentURL);
 	exit();
 }
 ?>
