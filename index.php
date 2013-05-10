@@ -214,8 +214,8 @@
             <!-- Post beneficiaries -->
             <form name="input" action="create_beneficiary.php" method="get">
                 <input type="submit" value="POST" />
-                BIC : <input type="text" size="12" maxlength="50" name="bic" value="CRLYFRPP">
-			    IBAN : <input type="text" size="12" maxlength="34" name="iban" value="FR3020041010124530725S03383">
+                BIC : <input type="text" size="12" maxlength="50" name="BankAccountBIC" value="CRLYFRPP">
+			    IBAN : <input type="text" size="12" maxlength="34" name="BankAccountIBAN" value="FR3020041010124530725S03383">
                 BankAccountOwnerName : <input type="text" size="12" maxlength="100" name="BankAccountOwnerName" value="Nom par defaut">
                 BankAccountOwnerAddress : <input type="text" size="12" maxlength="100" name="BankAccountOwnerAddress" value="Adresse par defaut">
             </form>
