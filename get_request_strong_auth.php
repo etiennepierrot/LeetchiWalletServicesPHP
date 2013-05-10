@@ -36,7 +36,7 @@ $url = $request -> UrlRequest;
 ?>
 
 <form id="formPostDocument" action=<?php echo $url;?> enctype="multipart/form-data" method="POST" >
-	<input type="file" name="StrongUserValidationDto.Picture"  />
+	<input type="file" name="StrongValidationDto.Picture"  />
 	<input type="submit" name="submit" value="Envoyer" />
 </form>
 

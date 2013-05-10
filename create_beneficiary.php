@@ -8,8 +8,10 @@
 
 require_once(dirname(__FILE__) . "/lib/common.inc");
 
-// Retrieve parameters
-$parameters = array("Tag", "FirstName", "LastName", "Email", "Nationality", "PersonType", "CanRegisterMeanOfPayment", "IP", "Password");
+print("TOTO");
+
+$parameters = array("BankAccountOwnerName", "BankAccountOwnerAddress", "BankAccountIBAN", "BankAccountBIC", "Tag");
+
 
 $array = array();
 for ($i = 0; $i < count($parameters) ; $i++) {
@@ -21,12 +23,14 @@ for ($i = 0; $i < count($parameters) ; $i++) {
 // Convert format
 $body = json_encode($array);
 
-$user = request("users", "POST", $body);
-
-if( !isset($user) || !isset($user->ID)) {
+// execute request
+$beneficiary = request("beneficiaries", "POST", $body);
+	
+if( !isset($beneficiary) || !isset($beneficiary->ID)) {
 	print("Error");
 	return;
 }
+
 
 ?>
 

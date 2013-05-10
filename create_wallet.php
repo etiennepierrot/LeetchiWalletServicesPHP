@@ -14,6 +14,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
  */
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 if ($user_id == 0) {
 	/*
@@ -38,7 +39,7 @@ if (!isset($user) || !isset($user -> ID)) {
 /*
  * POST request to create a wallet
  */
-$body = json_encode(array("Owners" => array($user -> ID)));
+$body = json_encode(array("Owners" => array($user -> ID), "Tag" => $tag));
 $wallet = request("wallets", "POST", $body);
 
 if (!isset($wallet) || !isset($wallet -> ID)) {

@@ -10,7 +10,12 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
-
+$amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
+$datets =  isset($_REQUEST["datets"]) ? $_REQUEST["datets"] : 0;
+$FrequencyCode =  isset($_REQUEST["FrequencyCode"]) ? $_REQUEST["FrequencyCode"] : 0;
+$NumberOfExecutions =  isset($_REQUEST["NumberOfExecutions"]) ? $_REQUEST["NumberOfExecutions"] : 0;
+$clientFeeAmount = isset($_REQUEST["clientFeeAmount"]) ? $_REQUEST["clientFeeAmount"] : 0;
+$tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 /* we fetch the user with the user_id in the URL
  * else we create the user
  */
@@ -35,36 +40,13 @@ if (!isset($user) || !isset($user -> ID)) {
 	return;
 }
 
-/* we fetch the wallet with the wallet_id in the URL
- * else we create the wallet
- */
-
-if ($wallet_id == 0) {
-	/*
-	 * POST request to create a wallet
-	 */
-	$body = json_encode(array("Owners" => array($user -> ID)));
-	$wallet = request("wallets", "POST", $body);
-} else {
-	/*
-	 * GET to fetch the wallet
-	 */
-	$wallet = request("wallets/" . $wallet_id, "GET");
-}
-
-if (!isset($wallet) || !isset($wallet -> ID)) {
-	print("Error");
-	return;
-}
-
-
-$startdate = new DateTime('2012/6/1');
-$startdateTS =  $startdate->getTimestamp();
 
 /*
  * POST request to create a contribution on a wallet
  */
-$body = json_encode(array("UserID" => $user -> ID, "WalletID" => $wallet -> ID, "Amount" => 1000, "StartDate" => $startdateTS, "FrequencyCode" => "Daily", "NumberOfExecutions" => 3,  "ClientFeeAmount" => "0", "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
+$body = json_encode(array("UserID" => $user -> ID, 
+            "Tag" => $tag, 
+            "WalletID" => $wallet_id, "Amount" => $amount, "StartDate" => $datets, "FrequencyCode" => $FrequencyCode, "NumberOfExecutions" => $NumberOfExecutions,  "ClientFeeAmount" => $clientFeeAmount, "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return.php"));
 
 $contribution = request("recurrent-contributions", "POST", $body);
 
