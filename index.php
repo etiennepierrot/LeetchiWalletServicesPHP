@@ -218,6 +218,15 @@
 			user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
+
+            <div class="enter">/wallet/{wallet_id}</div>
+            <div class="content">
+                <!-- get operations on wallet  -->
+                <form name="input" action="get_wallet.php" method="get">
+                    <input type="submit" value="GET" />
+		        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                </form>
+            </div>
             <div class="enter">/wallet/{wallet_id}/operations</div>
             <div class="content">
                 <!-- get operations on wallet  -->
