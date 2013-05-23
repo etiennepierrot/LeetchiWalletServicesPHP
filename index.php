@@ -309,7 +309,7 @@
         <div class="content">
             <!-- amazon POST -->
             <form name="input" action="GetVoucherAmazon.php" method="post">
-                <input type="submit" value="POST" />
+                <input type="submit" value="GET" />
                 voucher_id : <input type="text" size="12" maxlength="50" name="voucher_id">
                 
             </form>
