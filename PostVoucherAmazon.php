@@ -15,7 +15,7 @@ if ($amount == 0) {
 	print("Error : the amount must be specified in url");
 	return;
 }
-require_once(dirname(__FILE__) . "/common.inc");
+require_once (dirname(__FILE__) . "/lib/common.inc");
 
     
     
