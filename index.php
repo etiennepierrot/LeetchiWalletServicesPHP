@@ -294,7 +294,7 @@
 
 <div class="enter">/amazon </div>
         <div class="content">
-            <!-- create transfer -->
+            <!-- amazon POST -->
             <form name="input" action="PostVoucherAmazon.php" method="post">
                 <input type="submit" value="POST" />
                 user_id : <input type="text" size="12" maxlength="50" name="user_id">
@@ -302,6 +302,16 @@
                 amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
                 store : <input type="text" size="12" maxlength="50" name="store" value="fr">
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
+            </form>
+        </div>
+
+        <div class="enter">/amazon/{voucherId} </div>
+        <div class="content">
+            <!-- amazon POST -->
+            <form name="input" action="GetVoucherAmazon.php" method="post">
+                <input type="submit" value="POST" />
+                voucher_id : <input type="text" size="12" maxlength="50" name="voucher_id">
+                
             </form>
         </div>
 
