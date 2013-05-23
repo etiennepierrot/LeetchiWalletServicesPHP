@@ -13,7 +13,7 @@ if ($voucher_id == 0) {
 	return;
 }
 
-$voucheramazon = request("amazonvoucher/".$id, "GET");
+$voucheramazon = request("amazonvoucher/".$voucher_id, "GET");
 
 
 ?>
