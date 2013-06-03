@@ -23,4 +23,3 @@ if ($user_id == 0) {
 </pre>
 </body>
 </html>
-s

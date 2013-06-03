@@ -106,6 +106,15 @@
 		        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
             </form>
         </div>
+
+        <div class="enter">/operations/{operation_id}</div>
+        <div class="content">
+            <!-- get an operation  -->
+            <form name="input" action="get_operation.php" method="get">
+                <input type="submit" value="GET" />
+		        operation_id* : <input type="text" size="12" maxlength="50" name="operation_id">
+            </form>
+        </div>
         <div class="enter">/contributions</div>
         <div class="content">
             <!-- get contribution by id-->

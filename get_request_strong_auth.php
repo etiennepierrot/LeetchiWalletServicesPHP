@@ -23,7 +23,7 @@ if ($user_id == 0) {
 	 */
 	 
 	 $body = json_encode(array("tag" => "Custom"));
-	$request = request("users/" . $user_id . "/strongAuthentication", "GET");
+	$request = request("users/" . $user_id . "/strongAuthentication", "POST", $body);
 }
 
 
