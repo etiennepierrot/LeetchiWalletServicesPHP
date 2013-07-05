@@ -329,6 +329,7 @@
 		user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 		wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
+        clientfeeamount : <input type="text" size="12" maxlength="50" name="ClientFeeAmount" value="0">
             <input type="submit" value="Create withdrawal" />
         </form>
         <!-- get request strongAuthentication -->
